@@ -1,0 +1,61 @@
+Hi My name is sai sagarI am working in jpmc
+
+# Python File Operations - Important Things to Know
+
+## Opening Files
+- Use `open()` function with mode parameter:
+  - 'r' - read (default)
+  - 'w' - write (overwrites existing content)
+  - 'a' - append (adds to end)
+  - 'r+' - read and write
+  - 'b' - binary mode (e.g., 'rb', 'wb')
+
+## Context Managers (Best Practice)
+- Always use `with` statement to ensure files are properly closed:
+```python
+with open('file.txt', 'r') as f:
+    content = f.read()
+# File automatically closed after block
+```
+
+## Reading Files
+- `read()` - reads entire file as string
+- `readline()` - reads one line at a time
+- `readlines()` - returns list of all lines
+- Iterating: `for line in file:` - memory efficient for large files
+
+## Writing Files
+- `write()` - writes string to file (doesn't add newline)
+- `writelines()` - writes list of strings
+- Remember to add '\n' for newlines when needed
+
+## File Paths
+- Use `pathlib.Path` for modern, cross-platform path handling
+- Or use `os.path.join()` for compatibility
+- Avoid hardcoded slashes (/ or \)
+
+## Error Handling
+- Wrap file operations in try/except blocks
+- Common exceptions: FileNotFoundError, PermissionError, IOError
+```python
+try:
+    with open('file.txt') as f:
+        data = f.read()
+except FileNotFoundError:
+    print("File not found")
+```
+
+## Binary Files
+- Use 'b' mode for images, videos, PDFs, etc.
+- Read/write bytes objects instead of strings
+
+## File Position
+- `seek(offset)` - move to specific position
+- `tell()` - get current position
+
+## Important Reminders
+- Files are not closed until you close them or exit `with` block
+- Writing mode 'w' deletes existing content
+- Always handle exceptions for production code
+- Use encoding parameter for non-UTF-8 files: `open('file.txt', encoding='utf-8')`
+
