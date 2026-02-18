@@ -13,4 +13,4 @@ def get_prompt(topic: str) -> str:
 
 
 if __name__=="__main_":
-    mcp.run();
+    mcp.run()
